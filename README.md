@@ -1,5 +1,6 @@
 # BlueGateAPP
-App para o sistema BlueGate(Abrir portão com Arduino)
+App para o sistema BlueGate(Abrir portão com Arduino)  
+  
 App and Arduino circuito to open gates based on bluetooth and relay modules
 
 # Build Instructions
