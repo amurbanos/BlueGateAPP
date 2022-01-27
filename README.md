@@ -7,8 +7,10 @@ npx react-native start
 npx react-native run-android (or run-ios)  
 
 Eletronic circuit
-Circuito eletronico
+Circuito eletronico  
+  
 ![alt text](https://raw.githubusercontent.com/amurbanos/BlueGateAPP/main/BLueGateArduino_bb.jpg)
 
-App React native(Android ou IOS)
+App React native(Android ou IOS)  
+  
 ![alt text](https://raw.githubusercontent.com/amurbanos/BlueGateAPP/main/AppPrint.jpeg)
