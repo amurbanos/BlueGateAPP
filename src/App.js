@@ -1,5 +1,7 @@
 /**
  * Urbano
+ *
+ *
  */
 
 import React, {useState, useEffect} from 'react';
@@ -17,10 +19,11 @@ LogBox.ignoreAllLogs();
 
 const App: () => Node = () => {
   const [device, setDevice] = useState(null);
-  const [message, setMessage] = useState('123');
+  const [message, setMessage] = useState('ACESSO');
 
   /**
-   *
+   * Enable bluetooth.
+   * @return {void}
    */
   function requestEnable() {
     try {
@@ -32,36 +35,47 @@ const App: () => Node = () => {
   requestEnable();
 
   /**
-   *
+   * List paired devices.
+   * @return {void}
    */
   async function listDevices() {
     const list = await BluetoothSerial.list();
-    const devc = list.find(device => device.name === 'HC-05');
     if (device == null) {
-      setDevice(devc);
-      connect(devc);
+      setDevice(list.find(device => device.name === 'HC-05'));
     }
   }
   listDevices();
 
   /**
-   *
+   * Set device when list is ok
+   * @return {void}
    */
-  async function connect(devc) {
+  useEffect(() => {
+    connect();
+  }, [device]);
+
+  /**
+   * Connect to bluetooth device.
+   * @return {void}
+   */
+  async function connect() {
     try {
-      const connected = await BluetoothSerial.device(devc.id).connect();
+      const connected = await BluetoothSerial.device(device.id).connect();
       if (connected) {
         console.log('Conectado');
-        // await BluetoothSerial.device(device.id).disconnect();
       }
     } catch (e) {
       console.log(e.message);
     }
   }
 
+  /**
+   * Send data to device.
+   * @return {void}
+   */
   async function send() {
     try {
-      await BluetoothSerial.device(device.id).write('ACESSO');
+      await BluetoothSerial.device(device.id).write(message);
     } catch (e) {
       console.log(e.message);
     }
@@ -76,7 +90,9 @@ const App: () => Node = () => {
         <Button
           title="OK"
           containerStyle={{
-            marginBottom: 10,
+            borderRadius: 100,
+            height: 200,
+            width: 200,
           }}
           buttonStyle={{
             padding: 15,
