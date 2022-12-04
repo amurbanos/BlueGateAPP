@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
-      - name: Da branch
+      - name: "Da branch"
         run: echo ${github.base_ref}
-      - name: Para a branch
+      - name: "Para a branch"
         run: echo ${github.head_ref}
