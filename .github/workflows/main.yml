@@ -3,7 +3,7 @@ on: [pull_request, push, workflow_dispatch]
 
 jobs:
   deploy:
-    name: "Deploy to staging"
+    name: "Testando"
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
