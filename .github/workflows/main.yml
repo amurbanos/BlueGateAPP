@@ -8,6 +8,4 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Configure SSH
-        run: echo ${BASE_BRANCH}
-    env:
-      BASE_BRANCH: ${{ github.base_ref }}
+        run: echo ${{GITHUB_REF##*/}}
