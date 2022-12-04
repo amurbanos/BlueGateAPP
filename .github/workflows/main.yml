@@ -5,6 +5,7 @@ on:
     types:
       - closed
 
+
 jobs:
   deploy:
     name: "Testando"
