@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || 
     steps:
+      - name: files
+        uses: jitterbit/get-changed-files@v1
+      - run: for changed_file in ${{steps.files.outputs.all}}; do echo ${changed_file} done
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
