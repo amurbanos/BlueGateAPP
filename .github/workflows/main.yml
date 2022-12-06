@@ -14,16 +14,23 @@ jobs:
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
-      - name: Get changed files
+      - name: Arquivos modificados
         id: changed-files
         uses: tj-actions/changed-files@v14.6
       
       - name: Instalando uchardet
         run: sudo apt-get install uchardet -y
 
-      - name: List all changed files
+      - name: Lista os arquivos modificados
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
               encoding=$(uchardet $file) && 
               echo $encoding
+              if [ "$encoding" = "ISO-8859-1" ]; then
+                  echo "Encoding válidi"
+              else
+                  echo "Encoding inválilido no arquivo . "
+                  echo $file
+                  exit 1
+              fi
           done
