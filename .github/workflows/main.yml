@@ -1,18 +1,14 @@
-name: CI
-on: [pull_request, push, workflow_dispatch, pull_request_review]
-#on:
-#  pull_request:
-#    types:
-#      - closed
+name: Testando Encoding
+on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # windows-latest | macos-latest
+    runs-on: ubuntu-latest
     name: Testando encoding
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          fetch-depth: 0
 
       - name: Arquivos modificados
         id: changed-files
@@ -27,9 +23,9 @@ jobs:
               encoding=$(uchardet $file) && 
               echo $encoding
               if [ "$encoding" = "ISO-8859-1" ]; then
-                  echo "Encoding válidi"
+                  echo "Encoding correto"
               else
-                  echo "Encoding inválilido no arquivo . "
+                  echo "Encoding inválido no arquivo . "
                   echo $file
                   exit 1
               fi
