@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || 
     steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image    
+    
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v34
