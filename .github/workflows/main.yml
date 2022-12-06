@@ -19,7 +19,7 @@ jobs:
         uses: tj-actions/changed-files@v14.6
       
       - name: Instalando uchardet
-        run: apt install uchardet -y
+        run: sudo apt-get install uchardet -y
 
       - name: List all changed files
         run: |
