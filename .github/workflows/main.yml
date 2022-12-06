@@ -10,11 +10,14 @@ jobs:
     name: "Testando"
     runs-on: ubuntu-latest
     # if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || 
+
     steps:
       - name: Checkout Current Repository
-        uses: checkout/checkout@main
+        uses: checkout/checkout@v2
         with:
-          path: ./source-repo/  
+          path: ./source-repo/ 
+          ref: 'main'
+ 
     
       - name: Get changed files
         id: changed-files
