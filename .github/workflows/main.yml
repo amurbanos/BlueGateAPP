@@ -25,5 +25,8 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed" |
-            uchardet $file
+            if(uchardet $file
+            if [ "$file" = "ASCII" ]; then
+              echo "Encoding valido"
+            fi 
           done
