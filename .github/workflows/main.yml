@@ -22,7 +22,7 @@ jobs:
         run: |
           php ${GITHUB_WORKSPACE}/.github/jira-test.php $JIRA_HOST $JIRA_TOKEN $JIRA_TASK
         env:
-          JIRA_HOST: https://jira.aisolutions.tec.br/
-          JIRA_TOKEN: 5554444 
+          JIRA_HOST: ${{ secrets.JIRA_HOST }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_TASK: ${{ github.head_ref || github.ref_name }} 
 
