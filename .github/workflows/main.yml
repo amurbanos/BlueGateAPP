@@ -13,8 +13,10 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Instalando JIRA PHP Lib
-        run: composer require lesstif/php-jira-rest-client
-
+        run: |
+          composer require lesstif/php-jira-rest-client |
+          composer require vlucas/phpdotenv
+        
       - name: create env file
         run: |
           touch .env
