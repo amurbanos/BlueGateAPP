@@ -24,7 +24,6 @@ try {
     $transition = new Transition();
     $transition->setTransitionName('Test');
     $transition->setCommentBody('Liberado para teste em homologação.');
-
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
     print_r($e->getMessage());
