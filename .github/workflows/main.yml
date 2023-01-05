@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     #if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
       - name: Instalando JIRA PHP Lib
         run: composer require lesstif/php-jira-rest-client
 
