@@ -20,9 +20,7 @@ jobs:
       - name: create env file
         run: |
           touch .env
-          echo JIRA_HOST=https://jira.aisolutions.tec.br/ >> .env
-          echo JIRA_TOKEN=https://jira.aisolutions.tec.br/ >> .env
-          echo JIRA_TASK=https://jira.aisolutions.tec.br/ >> .env
+          echo JIRA_HOST=https://jira.aisolutions.tec.br >> .env
 
       - name: Chandge task to test on jira
         run: |
