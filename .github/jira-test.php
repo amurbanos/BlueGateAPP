@@ -20,24 +20,10 @@ $issueService = new IssueService(
    )
 );
 
-$queryParam = [
-    'fields' => [  // default: '*all'
-        'summary',
-        'comment',
-    ],
-    'expand' => [
-        'transitions'
-    ]
-];
-
-$issue = $issueService->get('SEAD-2566', $queryParam);
-print_r($issue);
-exit;
-
 try {			
     $transition = new Transition();
-    $transition->setTransitionName('Test');
-    $transition->setCommentBody('Liberado para teste em homologação.');
+    $transition->setTransitionName('Iniciar');
+    // $transition->setCommentBody('Liberado para teste em homologação.');
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
     print_r($e->getMessage());
