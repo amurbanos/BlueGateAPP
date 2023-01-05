@@ -7,6 +7,7 @@ use JiraRestApi\JiraException;
 
 $issueKey = 'TEST-879';
 
+print_r($_ENV);
 exit;
 
 $issueService = new IssueService(new ArrayConfiguration(
