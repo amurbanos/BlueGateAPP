@@ -10,10 +10,6 @@ $jiraHost = $argv[1];
 $personalAccessToken = $argv[2];
 $issueKey = $argv[3];
 
-print_r($argv);
-exit;
-
-
 $issueService = new IssueService(
     new ArrayConfiguration(
         [
