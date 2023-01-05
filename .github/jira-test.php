@@ -30,7 +30,7 @@ $queryParam = [
     ]
 ];
 
-$issue = $issueService->get('PMVG-57', $queryParam);
+$issue = $issueService->get('SEAD-2566', $queryParam);
 print_r($issue);
 exit;
 
