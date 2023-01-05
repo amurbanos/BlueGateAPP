@@ -22,8 +22,8 @@ $issueService = new IssueService(
 
 try {			
     $transition = new Transition();
-    $transition->setTransitionName('Em progresso');
-    // $transition->setCommentBody('Liberado para teste em homologação.');
+    $transition->setTransitionName('Test');
+    $transition->setCommentBody('Liberado para teste em homologação.');
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
     print_r($e->getMessage());
