@@ -3,9 +3,14 @@ on: [pull_request, push, workflow_dispatch]
 
 jobs:
   deploy:
-    name: "Set Jira task status to Test "
+    name: "Set Jira task status to Test"
     runs-on: ubuntu-latest
     #if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     steps:
       - name: Instalando JIRA PHP Lib
         run: composer require lesstif/php-jira-rest-client
+
+      - name: Chandge task to test on jira
+        run: |
+          php ${GITHUB_WORKSPACE}/.github/jira-test.sh
+          
