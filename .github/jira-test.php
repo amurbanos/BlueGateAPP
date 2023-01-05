@@ -6,9 +6,9 @@ use JiraRestApi\Configuration\ArrayConfiguration;
 use JiraRestApi\Issue\Transition;
 use JiraRestApi\JiraException;
 
-$issueKey = 'TEST-879';
 $jiraHost = $argv[1];
 $personalAccessToken = $argv[2];
+$issueKey = $argv[3];
 
 $issueService = new IssueService(new ArrayConfiguration(
           [
