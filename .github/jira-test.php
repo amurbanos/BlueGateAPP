@@ -5,9 +5,6 @@ use JiraRestApi\Issue\IssueService;
 use JiraRestApi\Issue\Transition;
 use JiraRestApi\JiraException;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 $issueKey = 'TEST-879';
 
 print_r($argv);
