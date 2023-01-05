@@ -15,6 +15,13 @@ jobs:
       - name: Instalando JIRA PHP Lib
         run: composer require lesstif/php-jira-rest-client
 
+      - name: create env file
+        run: |
+          touch .env
+          echo JIRA_HOST=https://jira.aisolutions.tec.br/ >> .env
+          echo JIRA_TOKEN=https://jira.aisolutions.tec.br/ >> .env
+          echo JIRA_TASK=https://jira.aisolutions.tec.br/ >> .env
+
       - name: Chandge task to test on jira
         run: |
           php ${GITHUB_WORKSPACE}/.github/jira-test.php
