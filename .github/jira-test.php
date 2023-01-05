@@ -10,13 +10,15 @@ $jiraHost = $argv[1];
 $personalAccessToken = $argv[2];
 $issueKey = $argv[3];
 
-$issueService = new IssueService(new ArrayConfiguration(
-          [
-               'jiraHost' => $jiraHost,
-               'useTokenBasedAuth' => true,
-               'personalAccessToken' => $personalAccessToken,
-          ]
-   ));
+$issueService = new IssueService(
+    new ArrayConfiguration(
+        [
+            'jiraHost' => $jiraHost,
+            'useTokenBasedAuth' => true,
+            'personalAccessToken' => $personalAccessToken,
+        ]
+   )
+);
 
 try {			
     $transition = new Transition();
