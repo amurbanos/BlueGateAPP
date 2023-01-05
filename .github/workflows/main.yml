@@ -1,4 +1,4 @@
-name: Testando Encoding
+name: CI
 on: [pull_request, push, workflow_dispatch]
 
 jobs:
@@ -7,12 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     #if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     steps:
-      - name: Instalando composer
-        run: |
-          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" |
-          php composer-setup.php |
-          php -r "unlink('composer-setup.php');" |
-          sudo mv composer.phar /usr/local/bin/composer
-
       - name: Instalando JIRA PHP Lib
         run: composer require lesstif/php-jira-rest-client
