@@ -6,22 +6,21 @@ use JiraRestApi\Issue\Transition;
 use JiraRestApi\JiraException;
 
 $issueKey = 'TEST-879';
-
-print_r($argv);
-exit;
+$jiraHost = $argv[1];
+$personalAccessToken = $argv[2];
 
 $issueService = new IssueService(new ArrayConfiguration(
           [
-               'jiraHost' => 'https://jira.aisolutions.tec.br',
+               'jiraHost' => $jiraHost,
                'useTokenBasedAuth' => true,
-               'personalAccessToken' => 'your-token-here',
+               'personalAccessToken' => $personalAccessToken,
           ]
    ));
 
 try {			
     $transition = new Transition();
-    $transition->setTransitionName('Resolved');
-    $transition->setCommentBody('performing the transition via REST API.');
+    $transition->setTransitionName('Test');
+    $transition->setCommentBody('Liberado para teste em homologação.');
 
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
