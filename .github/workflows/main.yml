@@ -12,5 +12,4 @@ jobs:
 
       - name: Chandge task to test on jira
         run: |
-          php ${GITHUB_WORKSPACE}/.github/jira-test.sh
-          
+          php ${GITHUB_WORKSPACE}/.github/jira-test.php
