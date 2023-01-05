@@ -1,5 +1,8 @@
 name: CI
-on: [pull_request, push, workflow_dispatch]
+on:
+  pull_request:
+    types:
+      - closed
 
 jobs:
   deploy:
@@ -17,7 +20,9 @@ jobs:
 
       - name: Chandge task to test on jira
         run: |
-          php ${GITHUB_WORKSPACE}/.github/jira-test.php $JIRA_HOST $JIRA_TOKEN
+          php ${GITHUB_WORKSPACE}/.github/jira-test.php $JIRA_HOST $JIRA_TOKEN $JIRA_TASK
         env:
           JIRA_HOST: https://jira.aisolutions.tec.br/
-          JIRA_TOKEN: 5554444
+          JIRA_TOKEN: 5554444 
+          JIRA_TASK: ${{ github.head_ref || github.ref_name }} 
+
