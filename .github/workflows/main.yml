@@ -19,7 +19,7 @@ jobs:
 
       - name: Chandge task to test on jira
         run: |
-          php ${GITHUB_WORKSPACE}/.github/jira-test.php $JIRA_HOST $JIRA_TOKEN $JIRA_TASK
+          php ${GITHUB_WORKSPACE}/.github/jira_issue_test.php $JIRA_HOST $JIRA_TOKEN $JIRA_TASK
         env:
           JIRA_HOST: ${{ secrets.JIRA_HOST }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }} 
