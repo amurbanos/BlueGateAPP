@@ -17,7 +17,7 @@ jobs:
 
       - name: Chandge task to test on jira
         run: |
-          php ${GITHUB_WORKSPACE}/.github/jira-test.php $JIRA_HOST $JIRA_HOST
+          php ${GITHUB_WORKSPACE}/.github/jira-test.php $JIRA_HOST $JIRA_TOKEN
         env:
-          JIRA_HOST: 55
-          JIRA_TOKEN: 555
+          JIRA_HOST: https://jira.aisolutions.tec.br/
+          JIRA_TOKEN: 5554444
