@@ -2,6 +2,7 @@
 require 'vendor/autoload.php';
 
 use JiraRestApi\Issue\IssueService;
+use JiraRestApi\Configuration\ArrayConfiguration;
 use JiraRestApi\Issue\Transition;
 use JiraRestApi\JiraException;
 
