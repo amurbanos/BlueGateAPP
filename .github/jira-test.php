@@ -11,6 +11,7 @@ $personalAccessToken = $argv[2];
 $issueKey = $argv[3];
 
 print_r($issueKey);
+exit;
 
 $issueService = new IssueService(
     new ArrayConfiguration(
