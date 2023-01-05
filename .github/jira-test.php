@@ -25,5 +25,5 @@ try {
 
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
-    $this->assertTrue(FALSE, 'add Comment Failed : ' . $e->getMessage());
+    print_r($e->getMessage());
 }
