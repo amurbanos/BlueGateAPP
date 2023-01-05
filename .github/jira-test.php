@@ -22,7 +22,7 @@ $issueService = new IssueService(
 
 try {			
     $transition = new Transition();
-    $transition->setTransitionName('Iniciar');
+    $transition->setTransitionName('Em progresso');
     // $transition->setCommentBody('Liberado para teste em homologação.');
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
