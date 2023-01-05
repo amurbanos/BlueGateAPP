@@ -10,7 +10,7 @@ $dotenv->load();
 
 $issueKey = 'TEST-879';
 
-print_r($_ENV);
+print_r($argv);
 exit;
 
 $issueService = new IssueService(new ArrayConfiguration(
