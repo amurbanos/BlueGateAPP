@@ -7,12 +7,20 @@ use JiraRestApi\JiraException;
 
 $issueKey = 'TEST-879';
 
+exit;
+
+$issueService = new IssueService(new ArrayConfiguration(
+          [
+               'jiraHost' => 'https://jira.aisolutions.tec.br',
+               'useTokenBasedAuth' => true,
+               'personalAccessToken' => 'your-token-here',
+          ]
+   ));
+
 try {			
     $transition = new Transition();
     $transition->setTransitionName('Resolved');
     $transition->setCommentBody('performing the transition via REST API.');
-
-    $issueService = new IssueService();
 
     $issueService->transition($issueKey, $transition);
 } catch (JiraRestApi\JiraException $e) {
