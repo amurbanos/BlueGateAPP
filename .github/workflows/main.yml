@@ -8,7 +8,7 @@ jobs:
   deploy:
     name: "Set Jira task status to Test"
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    if: github.event.pull_request.merged == true
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
