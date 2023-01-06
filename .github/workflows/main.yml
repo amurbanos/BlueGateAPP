@@ -23,4 +23,4 @@ jobs:
         env:
           JIRA_HOST: ${{ secrets.JIRA_HOST }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }} 
-          JIRA_TASK: ${{ github.head_ref || github.ref_name }} 
+          JIRA_TASK: ${{ github.head_ref || github.ref_name }}
