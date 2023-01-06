@@ -5,8 +5,8 @@ on:
       - closed
 
 jobs:
-  deploy:
-    name: "Set Jira task status to Test"
+  change_issue_to_test:
+    name: "Set Jira issue status to Test"
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     steps:
