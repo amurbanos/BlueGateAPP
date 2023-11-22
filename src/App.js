@@ -1,9 +1,3 @@
-/**
- * Urbano
- *
- *
- */
-
 import React, {useState, useEffect} from 'react';
 import type {Node} from 'react';
 import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
