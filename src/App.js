@@ -1,19 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import type {Node} from 'react';
-import {ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native';
-import {LogBox} from 'react-native';
-import BluetoothSerial, {
-  withSubscription,
-} from 'react-native-bluetooth-serial-next';
+import {StyleSheet, Text, View, ImageBackground} from 'react-native';
+import {LogBox, ToastAndroid} from 'react-native';
+import BluetoothSerial from 'react-native-bluetooth-serial-next';
 import {Button} from 'react-native-elements';
 
 //
 LogBox.ignoreLogs(['new NativeEventEmitter']);
 LogBox.ignoreAllLogs();
 
-const App: () => Node = () => {
+const App = () => {
   const [device, setDevice] = useState(null);
-  const [message, setMessage] = useState('ACESSO');
+  const [message, setMessage] = useState('ativar');
+  const [isConnected, setIsConnected] = useState(false);
 
   /**
    * Enable bluetooth.
@@ -23,7 +21,7 @@ const App: () => Node = () => {
     try {
       BluetoothSerial.requestEnable();
     } catch (e) {
-      Toast.showShortBottom(e.message);
+      ToastAndroid.show(e.message, ToastAndroid.SHORT);
     }
   }
   requestEnable();
@@ -57,6 +55,7 @@ const App: () => Node = () => {
       const connected = await BluetoothSerial.device(device.id).connect();
       if (connected) {
         console.log('Conectado');
+        setIsConnected(true);
       }
     } catch (e) {
       console.log(e.message);
@@ -76,47 +75,57 @@ const App: () => Node = () => {
   }
 
   return (
-    <>
+    <ImageBackground
+      source={require('../assets/images/bg.jpg')}
+      style={styles.container}
+    >
       <View style={styles.logoContainer}>
-        <Text style={styles.logoContainer.textLogo}>BlueGate</Text>
+        <Text style={styles.textLogo}>Roborbo smart</Text>
       </View>
       <View style={styles.btnContainer}>
         <Button
-          title="OK"
-          containerStyle={{
-            borderRadius: 100,
-            height: 200,
-            width: 200,
-          }}
-          buttonStyle={{
-            padding: 15,
-            borderRadius: 100,
-            height: 200,
-            width: 200,
-          }}
+          title="Enviar"
+          disabled={!isConnected}
+          containerStyle={styles.buttonContainer}
+          buttonStyle={styles.buttonStyle}
           onPress={() => {
             send();
           }}
         />
       </View>
-    </>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   logoContainer: {
-    justifyContent: 'center', //Centered horizontally
-    alignItems: 'center', //Centered vertically
-    flex: 3,
-    textLogo: {
-      fontSize: 60,
-      fontWeight: 'bold',
-    },
+    flex: 1,
+    justifyContent: 'center',
+  },
+  textLogo: {
+    fontSize: 56,
+    fontWeight: 'bold',
+    color: 'white', // Cor do texto
   },
   btnContainer: {
-    justifyContent: 'center', //Centered horizontally
-    alignItems: 'center', //Centered vertically
-    flex: 9,
+    flex: 1,
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+
+  },
+  buttonStyle: {
+    padding: 15,
+    borderRadius: 50,
+    height: 200,
+    width: 200,
+    backgroundColor: 'red', // Cor do botão
+    opacity: 0.8, // Opacidade do botão
   },
 });
 
